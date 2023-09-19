@@ -6,3 +6,22 @@ from .serializers import CreateUserSerializer, LoginUserSerializer
 
 class CreateUserView(CreateAPIView):
     serializer_class = CreateUserSerializer
+
+class LoginUserView(CreateUserView):
+    serializer_class = LoginUserSerializer
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        print(serializer)
+        if serializer.is_valid():
+            user = serializer.save()
+            
+            return Response(dict(
+                mensagem="logado com sucesso",
+            ),status=HTTP_200_OK
+            )
+            
+        
+        return Response(serializer.errors,status=HTTP_400_BAD_REQUEST)
+    
+
