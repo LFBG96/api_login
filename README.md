@@ -47,3 +47,5 @@ Api Login - Doc
 
 Nesta api, foi utilizado Django e RestApi para o seu desenvolvimento, e um banco de dados SQL: o Sqlite3, padrão de aplicações Django, realizando o tratamento de dados internamente para responder os requests em formato ".json". Permitindo somente requisições Post, exclusivamente por questões de segurança.
 
+Temos as principais classes localizadas nos arquivos serializers.py, views.py e apps.py. 
+
