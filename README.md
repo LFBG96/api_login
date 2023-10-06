@@ -49,3 +49,5 @@ Nesta api, foi utilizado Django e RestApi para o seu desenvolvimento, e um banco
 
 Temos as principais classes localizadas nos arquivos serializers.py, views.py e apps.py. 
 
+Sendo as serializers responsáveis por converter dados complexos, como models, consultas, e instâncias em um formato legível por outras aplicações(JSON/XML). Para entrada ou saída de dados. Ex:
+
