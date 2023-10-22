@@ -51,3 +51,17 @@ Temos as principais classes localizadas nos arquivos serializers.py, views.py e 
 
 Sendo as serializers responsáveis por converter dados complexos, como models, consultas, e instâncias em um formato legível por outras aplicações(JSON/XML). Para entrada ou saída de dados. Ex:
 
+        - classe "CreateUserSerializer": Criando e utilizando o modelo da classe do usuário, com os atributos username, e-mail e senha sendo campos obrigatórios, 	verificando e validando as informações em seguida. (Att)
+
+    	- classe "LoginUserSerializer": Validando a entrada de dados para executar o login. Retornando erros de entrada ou saída dos campos obrigatórios (login e senha).	
+
+
+Já as classes dentro do views.py, em geral estão criando a relação e controle dentro da comunicação entre api's, retornando erros e status de portas, http e response.
+
+
+
+A classe em apps, apenas estabelece modelos básicos para a nossa aplicação.
+
+O arquivo url, básico do Django, controla as dependências e domínios da nossa api.
+
+
