@@ -60,6 +60,9 @@ Já as classes dentro do views.py, em geral estão criando a relação e control
 
 
 
+
+
+
 A classe em apps, apenas estabelece modelos básicos para a nossa aplicação.
 
 O arquivo url, básico do Django, controla as dependências e domínios da nossa api.
