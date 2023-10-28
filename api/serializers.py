@@ -4,15 +4,15 @@ from django.contrib.auth.models import User
 class CreateUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username','email','password',)
+        fields = ('username','password',)
     def create(self,validade_data):
         username = validade_data.get("username")
         password = validade_data.get("password")
-        email = validade_data.get("email")
+        
         user = User.objects.create(
             username=username,
             password=password,
-            email=email,
+            
         )
         user.set_password(password)
         user.save()
@@ -31,7 +31,7 @@ class LoginUserSerializer(serializers.ModelSerializer):
         password = attrs.get("password") 
         user = User.objects.filter(username=username).first()
         if not user:
-            raise serializers.ValidationError({"username":"Usuario invalido"})
+            raise serializers.ValidationError({"userAuth":"false"})
         if not user.check_password(password):
             raise serializers.ValidationError({"password":"Senha invalida"})
             

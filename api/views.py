@@ -12,12 +12,12 @@ class LoginUserView(CreateUserView):
 
     def create(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
-        print(serializer)
+        
         if serializer.is_valid():
             user = serializer.save()
             
             return Response(dict(
-                mensagem="logado com sucesso",
+                userAuth="true",
             ),status=HTTP_200_OK
             )
             
