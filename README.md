@@ -8,7 +8,6 @@
 ```
 {
     "username":"Nomedousuario",
-    "email":"Email@live.com",
     "password":"SenhaDoUsuario"
   }
 ```
@@ -18,15 +17,13 @@
 ```
 {
     "username": "Nomedousuario",
-    "email": "Email@live.com",
     "password": "pbkdf2_sha256$320000$e7lEsYLNqtulPpFKKnm7kh$VPkRwlELas4o6MOq/pFfRN1TC4b2EO6rlEl58QxjH+8="
   }
 
 ```
 
 
-<span>No endpoint https://apenas.pythonanywhere.com/api/login/</span>
-<span>Ele necessita apenas do username e password para funcionar</span>
+<span>No endpoint https://apenas.pythonanywhere.com/api/login/ Com o metodo POST</span>
 
 ``` 
 {
@@ -38,9 +35,27 @@
 <span>E ele irá retornar essa mensagem se tiver com username e password corretos</span>
 ```
 {
-    "mensagem": "logado com sucesso"
+    "userAuth": "true"
   }
 ```
+<span>Se o usuario não existir, ou estiver errado, irá retornar</span>
+```
+{
+    "userAuth": [
+        "false"
+    ]
+}
+```
+<span>Se o usuario estiver correto, e a senha incorreta, irá retornar</span>
+
+```
+{
+    "password": [
+        "Senha invalida"
+    ]
+}
+```
+
 
 
 Api Login - Doc
