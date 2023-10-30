@@ -40,6 +40,7 @@ class LoginUserView(CreateAPIView):
             return Response(dict(
                 userAuth="true",
                 #refresh=str(refresh),
+                token_type= "Bearer",
                 token=str(refresh.access_token),
                 timestamp=timezone.now()
 
