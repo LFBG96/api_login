@@ -1,5 +1,3 @@
-#Documentação provisória
-
 <h1>Consumir a API</h1>
 
 <span>No endpoint https://apenas.pythonanywhere.com/api/create/</span>
@@ -8,6 +6,7 @@
 ```
 {
     "username":"Nomedousuario",
+    "cep":"00000-000"
     "password":"SenhaDoUsuario"
   }
 ```
@@ -16,9 +15,12 @@
 
 ```
 {
-  "username": "Nomedousuario",
-  "password": "pbkdf2_sha256$600000$rmmteQIhR1sisxm7Bas4X5$oiQa4kKlNgXpaEsXSVP9J2pCQl6Sc9j7IRGMJZGmkDI=",
-  "timestamp": "2023-10-30T12:49:19.304685Z"
+    "username": "Nomedousuario",
+    "password": "pbkdf2_sha256$600000$5gJnZZpaXZ35dmxvIH0RLY$84LL4VSKNuVK8f53NY3fmocZXVlNwuVDv7CMuJInB/8=",
+    "cep": "00000-000",
+    "client_code": 578932,
+    "timestamp": "2023-11-08T03:13:15.104580Z",
+    "id": 2
 }
 
 ```
@@ -45,10 +47,14 @@
 <span>E ele irá retornar essa mensagem se tiver com username e password corretos, o token tem duração de 5 minutos</span>
 ```
 {
-  "userAuth": "true",
- "token_type": "Bearer",
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk4NjcwNTgxLCJpYXQiOjE2OTg2NzAyODEsImp0aSI6IjYyMjlhZDU4NGRhMzQ1YTM5YjM2MmEwODQyMjJhYmYzIiwidXNlcl9pZCI6NX0.l22m9uOdo4EPV6J2XYF5GDdSJOD2wfCaQOEQXtslekg",
-  "timestamp": "2023-10-30T12:51:21.882856Z"
+    "userAuth": "true",
+    "id": 2,
+    "cep": "00000-000",
+    "username": "Nomedousuario",
+    "client_code": 578932,
+    "token_type": "Bearer",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk5NDEzNTU5LCJpYXQiOjE2OTk0MTMyNTksImp0aSI6ImUyMjc0ZjRlNzA5ZjQyZDI4OTc5ZWNlNmZlNTA1ZmVmIiwidXNlcl9pZCI6Mn0.XpCnx50njT7bV1tebc1eyWHZ3EIbp-gGZl_VciIjKMY",
+    "timestamp": "2023-11-08T03:14:19.660375Z"
 }
 ```
 <span>Se o usuario não existir, ou estiver errado, irá retornar</span>
@@ -89,6 +95,68 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk
   "timestamp": "2023-10-30T13:06:22.180813Z"
 }
 ```
+<span>No endpoint http://127.0.0.1:8000/api/user/578932 com o metodo get ele irá retornar apenas um usuario com aquele client_code</span>
+
+```
+{
+    "id": 2,
+    "password": "pbkdf2_sha256$600000$5gJnZZpaXZ35dmxvIH0RLY$84LL4VSKNuVK8f53NY3fmocZXVlNwuVDv7CMuJInB/8=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Nomedousuario",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-11-08T00:13:14.926891-03:00",
+    "cep": "00000-000",
+    "client_code": 578932,
+    "groups": [],
+    "user_permissions": []
+}
+
+```
+
+<span>No endpoint https://apenas.pythonanywhere.com/api/users/ com o metodo get, ele irá retornar uma lista de usuarios</span>
+```
+[
+    {
+        "id": 1,
+        "password": "pbkdf2_sha256$600000$oMt9sfseBrFtZJATWR2LUz$UQzbqwMGzhDoDDSNujVPL93q76GYP2fNyJcOAjA4wOc=",
+        "last_login": "2023-11-08T00:06:09.985169-03:00",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2023-11-07T23:51:11.807443-03:00",
+        "cep": "",
+        "client_code": 0,
+        "groups": [],
+        "user_permissions": []
+    },
+    {
+        "id": 2,
+        "password": "pbkdf2_sha256$600000$5gJnZZpaXZ35dmxvIH0RLY$84LL4VSKNuVK8f53NY3fmocZXVlNwuVDv7CMuJInB/8=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Nomedousuario",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-11-08T00:13:14.926891-03:00",
+        "cep": "00000-000",
+        "client_code": 578932,
+        "groups": [],
+        "user_permissions": []
+    }
+]
+```
 
 
 Api Login - Doc
@@ -125,6 +193,10 @@ O parâmetro de entrada informado não é válido.
 
 401 Não Autorizado
 Problemas durante a autenticação.
+
+HTTP 403 Forbidden
+Servidor recebeu a requisição, mas não pode dar uma resposta
+
 
 405 Metodo não permitido
 
