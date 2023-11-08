@@ -22,7 +22,6 @@ class CreateUserView(CreateAPIView):
             user = serializer.save()
             
             serializer_data = serializer.data
-            print(user.id)
             serializer_data.update(dict(timestamp=timezone.now(),id=user.id))
             return Response(serializer_data)
         
@@ -72,7 +71,6 @@ class UsersViewSet(viewsets.ViewSet):
     def list(self, request):
         queryset = User.objects.all()
         serializer = UserSerializer(queryset, many=True)
-        print(serializer)
         return Response(serializer.data)
     
     def retrieve(self, request, pk=None):
