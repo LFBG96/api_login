@@ -19,11 +19,11 @@ class CreateUserView(CreateAPIView):
         serializer = self.serializer_class(data=request.data)
   
         if serializer.is_valid():
-            serializer.save()
-            
+            user = serializer.save()
             
             serializer_data = serializer.data
-            serializer_data.update(dict(timestamp=timezone.now()))
+            print(user.id)
+            serializer_data.update(dict(timestamp=timezone.now(),id=user.id))
             return Response(serializer_data)
         
         
