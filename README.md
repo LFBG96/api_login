@@ -194,7 +194,7 @@ O parâmetro de entrada informado não é válido.
 401 Não Autorizado
 Problemas durante a autenticação.
 
-HTTP 403 Forbidden
+403 Forbidden
 Servidor recebeu a requisição, mas não pode dar uma resposta
 
 
