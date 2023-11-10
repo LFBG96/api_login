@@ -95,7 +95,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk
   "timestamp": "2023-10-30T13:06:22.180813Z"
 }
 ```
-<span>No endpoint http://127.0.0.1:8000/api/user/578932 com o metodo get ele irá retornar apenas um usuario com aquele client_code</span>
+<span>No endpoint https://apenas.pythonanywhere.com/api/user/578932 com o metodo GET ele irá retornar apenas um usuario com aquele client_code</span>
 
 ```
 {
@@ -118,7 +118,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjk
 
 ```
 
-<span>No endpoint https://apenas.pythonanywhere.com/api/users/ com o metodo get, ele irá retornar uma lista de usuarios</span>
+<span>No endpoint https://apenas.pythonanywhere.com/api/users/ com o metodo GET, ele irá retornar uma lista de usuarios</span>
 ```
 [
     {
