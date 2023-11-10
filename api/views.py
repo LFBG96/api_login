@@ -1,3 +1,5 @@
+from django.core.cache import cache
+
 from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from rest_framework.generics import CreateAPIView,ListAPIView
@@ -19,10 +21,11 @@ class CreateUserView(CreateAPIView):
         serializer = self.serializer_class(data=request.data)
   
         if serializer.is_valid():
-            user = serializer.save()
+            serializer.save()
+            
             
             serializer_data = serializer.data
-            serializer_data.update(dict(timestamp=timezone.now(),id=user.id))
+            serializer_data.update(dict(timestamp=timezone.now()))
             return Response(serializer_data)
         
         
@@ -69,14 +72,34 @@ class UsersViewSet(viewsets.ViewSet):
     #permission_classes = [IsAuthenticated,]
     #authentication_classes = [JWTAuthentication,]
     def list(self, request):
-        queryset = User.objects.all()
-        serializer = UserSerializer(queryset, many=True)
-        return Response(serializer.data)
+        users = cache.get('users')
+        if not users:
+            queryset = User.objects.all()
+            serializer = UserSerializer(queryset, many=True)
+            users = serializer.data
+            users.append(dict(timestamp=timezone.now()))
+            cache.set('users',users)
+        return Response(users)
     
     def retrieve(self, request, pk=None):
-        queryset = User.objects.all()
-        user = get_object_or_404(queryset, client_code=pk)
-        serializer = UserSerializer(user)
-        return Response(serializer.data)
+        current_user_id = cache.get('current_user_id')
+        
+        if current_user_id != pk:
+            cache.clear()
+
+        user = cache.get('user')
+        
+        if not user:
+
+            queryset = User.objects.all()
+            user = get_object_or_404(queryset, client_code=pk)
+            serializer = UserSerializer(user)
+            user = serializer.data
+            user.update(dict(timestamp=timezone.now()))
+
+            cache.set('user',user)
+        
+        cache.set('current_user_id',pk)
+        return Response(user)
     
 
