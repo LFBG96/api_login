@@ -183,6 +183,16 @@ A classe em apps, apenas estabelece modelos básicos para a nossa aplicação.
 
 O arquivo url, básico do Django, controla as dependências e domínios da nossa api.
 
+<h1> Formatação dos dados </h1>
+
+Abaixo estão os tipos e especificações de cada dado.
+
+| Campo  | Tipo | Tamanho |
+| :-: | :-: | :-: |
+| username | str | 150 |
+| password | str | 128 |
+| cep | str | 9 |
+
 <h1>Códigos de retorno</h1>
 
 200 OK
