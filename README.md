@@ -192,6 +192,7 @@ Abaixo estão os tipos e especificações de cada dado.
 | username | str | 150 |
 | password | str | 128 |
 | cep | str | 9 |
+| client_code | int | 6 |
 
 <h1>Códigos de retorno</h1>
 
